@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/BBB.iml" filepath="$PROJECT_DIR$/.idea/BBB.iml" />
+      <module fileurl="file://$PROJECT_DIR$/venv/Lib/site-packages/wds_files_CoursePythonAdult_1/sprite_types_cpa1/.idea/sprite_types_cpa1.iml" filepath="$PROJECT_DIR$/venv/Lib/site-packages/wds_files_CoursePythonAdult_1/sprite_types_cpa1/.idea/sprite_types_cpa1.iml" />
     </modules>
   </component>
 </project>
