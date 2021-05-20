@@ -21,6 +21,13 @@ enemy=sprite.add("mario-enemies",20,30,costume="turtle_stand")
 sprite.set_reverse_x(enemy,True)
 enemy_speed=10
 
+hammerx = sprite.get_right(enemy)
+hammery = sprite.get_top(enemy)
+hammer = sprite.add("mario-enemies", hammerx, hammery, costume="turtle_hammer")
+
+mariox = sprite.get_x(mario)
+marioy = sprite.get_y(mario)
+
 
 while True:
     sprite.move(mario,0,mario_speed)
@@ -30,8 +37,6 @@ while True:
     bot1 = sprite.get_bottom(enemy)
 
 
-    bulletend = time.time()
-    watch1 = int(bulletend - bulletstart)
 
     if bot>=world_y:
         sprite.move_bottom_to(mario,world_y)
@@ -41,38 +46,29 @@ while True:
         sprite.move_bottom_to(enemy,world_y)
         enemy_speed=-10
 
-    if watch1==1:
+    bulletend = time.time()
+    watch1 = int(bulletend - bulletstart)
+
+    sprite.move_at_angle_point(hammer, mariox, marioy,50)
+    angle=sprite.get_angle(hammer)
+    sprite.set_angle(hammer,angle+40)
+
+
+    if watch1==5:
         bulletstart=time.time()
+
         hammerx = sprite.get_right(enemy)
         hammery = sprite.get_top(enemy)
         hammer = sprite.add("mario-enemies", hammerx, hammery, costume="turtle_hammer")
-
-
         mariox = sprite.get_x(mario)
         marioy = sprite.get_y(mario)
-        point = randint(58, 80)
 
-        sprite.move_at_angle_point(hammer, mariox, marioy, point)
-        sprite.set_angle_modif(hammer, 85)
-        sprite.move_at_angle_point(hammer, mariox, marioy, point)
-        sprite.set_angle_modif(hammer, 130)
 
-        sprite.move(mario, 0, mario_speed)
-        sprite.move(enemy, 0, enemy_speed)
 
-        sprite.move_at_angle_point(hammer, mariox, marioy, point)
-        sprite.set_angle_modif(hammer, 190)
-        sprite.move_at_angle_point(hammer, mariox, marioy, point)
-        sprite.set_angle_modif(hammer, 250)
-        sprite.move_at_angle_point(hammer, mariox, marioy, point)
-        sprite.set_angle_modif(hammer, 310)
-        sprite.move_at_angle_point(hammer, mariox, marioy, point)
-        sprite.set_angle_modif(hammer, 360)
+    collide = sprite.is_collide_sprite(hammer, mario)
 
-        collide = sprite.is_collide_sprite(hammer, mario)
-
-        if collide == True:
-            break
+    if collide == True:
+        break
 
 
     top=sprite.get_top(mario)
