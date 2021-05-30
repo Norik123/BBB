@@ -11,6 +11,7 @@ def go():
 def go1():
     a=6
     def gooo():
+        nonlocal a
         print(a)
     gooo()
     print(a)
